@@ -1,0 +1,10 @@
+version: '3.7'
+
+services:
+  api:
+    image: neosapience/base64api
+    command: gunicorn --log-level=debug
+    ports:
+      - 5000
+    volumes: 
+      - ./app:/opt/code
