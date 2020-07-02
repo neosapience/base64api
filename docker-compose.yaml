@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   api:
-    image: neosapience/base64api
+    image: base64api
     command: gunicorn --log-level=debug
     ports:
       - 5000
