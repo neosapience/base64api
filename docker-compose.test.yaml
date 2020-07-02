@@ -2,5 +2,5 @@ version: '3.7'
 
 services:
   api:
-    image: neosapience/base64api
+    image: base64api
     command: pytest -lvs

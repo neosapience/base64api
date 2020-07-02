@@ -1,4 +1,4 @@
-name := neosapience/base64api
+name := base64api
 tag := 0.0.1
 
 
