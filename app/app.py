@@ -1,4 +1,6 @@
 from flask import Flask, request, jsonify, abort
+from distutils.util import strtobool
+import os
 import jsend
 import base64
 app = Flask(__name__)
@@ -11,7 +13,13 @@ def health():
 
 
 @app.route('/api/decode', methods=['POST'])
-def decode():    
+def decode():
+    if strtobool(os.environ.get('ENABLE_AUTH_HEADER', 'false')):
+        key = os.environ['AUTH_TOKEN_KEY']
+        value = os.environ['AUTH_TOKEN']
+        if value != request.headers.get(key):
+            abort(403)
+
     data = request.get_json(True)
     if 'src' not in data:
         return jsonify(jsend.error('params/src'))
